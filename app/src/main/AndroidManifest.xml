@@ -27,7 +27,11 @@
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login" />
-        <activity android:name=".friends2"></activity>
+        <activity android:name=".friends2" />
+        <activity
+            android:name=".activityfeed"
+            android:label="@string/title_activity_activityfeed"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

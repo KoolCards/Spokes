@@ -19,4 +19,5 @@
     <string name="addfriend">Friends</string>
     <string name="menu">Friends</string>
     <string name="notification">Friends</string>
+    <string name="title_activity_activityfeed">activityfeed</string>
 </resources>
