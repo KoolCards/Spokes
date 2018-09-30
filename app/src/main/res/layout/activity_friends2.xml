@@ -51,12 +51,14 @@
         app:layout_constraintVertical_bias="0.995"
         app:srcCompat="@drawable/notification" />
 
-    <Button
-        android:id="@+id/button"
+    <EditText
+        android:id="@+id/editText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
-        tools:layout_editor_absoluteX="167dp"
-        tools:layout_editor_absoluteY="146dp" />
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        tools:layout_editor_absoluteX="84dp"
+        tools:layout_editor_absoluteY="50dp" />
 
 </android.support.constraint.ConstraintLayout>

@@ -16,8 +16,8 @@
         completions."
     </string>
     <string name="title_activity_friends">Friends</string>
-    <string name="addfriend">Friends</string>
-    <string name="menu">Friends</string>
-    <string name="notification">Friends</string>
+    <string name="addfriend">AddFriend</string>
+    <string name="menu">Menu</string>
+    <string name="notification">Notifications</string>
     <string name="title_activity_activityfeed">activityfeed</string>
 </resources>
