@@ -23,6 +23,8 @@ import android.view.View.OnClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -36,10 +38,15 @@ public class MainActivity extends AppCompatActivity {
         spokes.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                DatabaseReference myRef = database.getReference("message");
+
+                myRef.setValue("Hello, World!");
                 startActivity(new Intent(MainActivity.this, LoginActivity.class));
                 //attemptLogin();
             }
         });
+
 
 
 
