@@ -15,9 +15,58 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
-    <string name="title_activity_friends">Friends</string>
+
+
+    <!-- Strings related to UI flow -->
+    <string name="back">Back</string>
+
+
+    <!-- Strings related to services -->
+    <string name="facebook">Facebook</string>
+    <string name="gmail">Gmail</string>
+    <string name="github">Github</string>
+    <string name="yahoo_news">Yahoo News</string>
+    <string name="slack">Slack</string>
+
+    <!-- Strings related to setup -->
+    <string name="setup">Setup</string>
+    <string name="selectservices">Select Frequently Used Services</string>
+
+    <!-- Strings related to addfriends -->
+    <string name="addfriends">Add Friends</string>
+    <string name="search">Search by Username: </string>
+    <string name="searchby">Search</string>
+    <string name="searchbar">______</string>
+
+
+    <!-- Strings related to menus -->
     <string name="addfriend">AddFriend</string>
     <string name="menu">Menu</string>
     <string name="notification">Notifications</string>
+
+    <!-- Strings related to pokes -->
+    <string name="poke">Poke</string>
+    <string name="pokeback">Poke Back</string>
+    <string name="pileon">Pile On</string>
+
+    <!-- Strings related to friends2 -->
+    <string name="title_activity_friends">Friends</string>
+    <string name="friend1"> Friend 1</string>
+    <string name="friend2"> Friend 2</string>
+    <string name="friend3"> Friend 3</string>
+
+    <!-- Strings related to activityfeed -->
     <string name="title_activity_activityfeed">activityfeed</string>
+    <string name="activityfeed">Activity Feed</string>
+    <string name="feeditem1">Friend 1 ignored Friend 2</string>
+    <string name="feeditem2">Friend 2 poked Friend 3</string>
+    <string name="feeditem3">Friend 3 poked You</string>
+    <string name="feeditem4">Friend 2 poked You</string>
+    <string name="feeditem5">Friend 2 ignored You</string>
+    <string name="title_activity_setup">setup</string>
+
+    <!-- Strings related to notifications -->
+    <string name="title_activity_notifications">Notifications</string>
+    <string name="timestamp">Timestamp</string>
+
 </resources>
