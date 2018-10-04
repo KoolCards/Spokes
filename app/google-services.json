@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "722864828743",
+    "firebase_url": "https://spokes-7f290.firebaseio.com",
+    "project_id": "spokes-7f290",
+    "storage_bucket": "spokes-7f290.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:722864828743:android:6fa6016bf44d7e58",
+        "android_client_info": {
+          "package_name": "com.example.ksatya.spokes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "722864828743-5i7opsmrktubj6ptgobjidqn37m5b6hn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ksatya.spokes",
+            "certificate_hash": "d827a9657b98369e3bbc1fb68099ffd7c93b2944"
+          }
+        },
+        {
+          "client_id": "722864828743-r2gunrh0obg2ia219oriai72lv7m6r0o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqg8yb6spGxK1ghhYv_g9p-vCTLrM0Prs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "722864828743-r2gunrh0obg2ia219oriai72lv7m6r0o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
