@@ -4,20 +4,20 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 
-public class friends2 extends AppCompatActivity {
+public class notifications extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_friends2);
+        setContentView(R.layout.activity_notifications);
+
         ImageButton addfriend = (ImageButton) findViewById(R.id.addfriend);
         addfriend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(friends2.this, addfriends.class));
+                startActivity(new Intent(notifications.this, addfriends.class));
             }
         });
 
@@ -25,7 +25,7 @@ public class friends2 extends AppCompatActivity {
         activityfeed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(friends2.this, activityfeed.class));
+                startActivity(new Intent(notifications.this, activityfeed.class));
             }
         });
 
@@ -33,7 +33,7 @@ public class friends2 extends AppCompatActivity {
         notifications.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(friends2.this, notifications.class));
+                startActivity(new Intent(notifications.this, notifications.class));
             }
         });
 
@@ -41,7 +41,7 @@ public class friends2 extends AppCompatActivity {
         gotopoke.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(friends2.this, friends2.class));
+                startActivity(new Intent(notifications.this, friends2.class));
             }
         });
     }
