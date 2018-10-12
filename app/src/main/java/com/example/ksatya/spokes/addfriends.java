@@ -7,6 +7,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class addfriends extends AppCompatActivity {
 
     @Override
@@ -26,6 +29,7 @@ public class addfriends extends AppCompatActivity {
         addfriend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 startActivity(new Intent(addfriends.this, addfriends.class));
             }
         });

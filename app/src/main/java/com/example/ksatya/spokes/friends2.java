@@ -17,6 +17,7 @@ public class friends2 extends AppCompatActivity {
         addfriend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 startActivity(new Intent(friends2.this, addfriends.class));
             }
         });
