@@ -28,11 +28,15 @@ import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.IdpResponse;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -43,15 +47,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        System.out.println("asfdsfdasfd");
         Button spokes = (Button) findViewById(R.id.spokes);
         spokes.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 createSignInIntent();
-                //
-                //getUserProfile();
-                //attemptLogin();
             }
         });
 
@@ -106,7 +106,8 @@ public class MainActivity extends AppCompatActivity {
             if (resultCode == RESULT_OK) {
                 // Successfully signed in
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                writeUserData(user.getUid(), user.getDisplayName(), user.getEmail());
+                startActivity(new Intent(MainActivity.this, setup.class));
                 // ...
             } else {
                 // Sign in failed. If response is null the user canceled the
@@ -118,8 +119,21 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
-
-
+    private void writeUserData(String userId, String name, String email) {
+        Map<String, Object> childUpdates = new HashMap<>();
+        childUpdates.put("name", name);
+        childUpdates.put("email", email);
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("users/" + userId);
+        myRef.setValue(childUpdates);
+        /*if (myRef.child(userId) != null) {
+            DatabaseReference ref = database.getReference("users/56666");
+            ref.setValue(myRef.child(userId).);
+        }
+        else {
+            DatabaseReference ref = database.getReference("users/" + userId);
+            ref.setValue("mask off");
+        }*/
+    }
 
 }
