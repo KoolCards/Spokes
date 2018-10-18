@@ -29,6 +29,7 @@ import com.firebase.ui.auth.IdpResponse;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
@@ -58,28 +59,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void getUserProfile() {
-        // [START get_user_profile]
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        System.out.print(user);
-        if (user != null) {
-            // Name, email address, and profile photo Url
-            String name = user.getDisplayName();
-            String email = user.getEmail();
-            Uri photoUrl = user.getPhotoUrl();
-
-            // Check if user's email is verified
-            boolean emailVerified = user.isEmailVerified();
-
-            // The user's ID, unique to the Firebase project. Do NOT use this value to
-            // authenticate with your backend server, if you have one. Use
-            // FirebaseUser.getIdToken() instead.
-            String uid = user.getUid();
-        }
-
-        // [END get_user_profile]
-    }
-
     public void createSignInIntent() {
         // [START auth_fui_create_intent]
         // Choose authentication providers
@@ -104,36 +83,55 @@ public class MainActivity extends AppCompatActivity {
             IdpResponse response = IdpResponse.fromResultIntent(data);
 
             if (resultCode == RESULT_OK) {
-                // Successfully signed in
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 writeUserData(user.getUid(), user.getDisplayName(), user.getEmail());
-                startActivity(new Intent(MainActivity.this, setup.class));
-                // ...
+                final String uId = user.getUid();
+                final DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("users/" + uId);
+                userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    boolean hasChild = false;
+                    @Override
+                    public void onDataChange(DataSnapshot snapshot) {
+                        if (!snapshot.hasChild("preferences")) {
+                            startActivity(new Intent(MainActivity.this, setup.class));
+                        } else {
+                            startActivity(new Intent(MainActivity.this, addfriends.class));
+                        }
+                    }
+                    @Override
+                    public void onCancelled(DatabaseError error) {
+                    }
+                });
             } else {
-                // Sign in failed. If response is null the user canceled the
-                // sign-in flow using the back button. Otherwise check
-                // response.getError().getErrorCode() and handle the error.
-                // ...
 
             }
         }
     }
 
+    private void isSetup(String userId) {
+
+    }
+
     private void writeUserData(String userId, String name, String email) {
-        Map<String, Object> childUpdates = new HashMap<>();
-        childUpdates.put("name", name);
-        childUpdates.put("email", email);
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("users/" + userId);
-        myRef.setValue(childUpdates);
-        /*if (myRef.child(userId) != null) {
-            DatabaseReference ref = database.getReference("users/56666");
-            ref.setValue(myRef.child(userId).);
-        }
-        else {
-            DatabaseReference ref = database.getReference("users/" + userId);
-            ref.setValue("mask off");
-        }*/
+        final String uName = name;
+        final String uEmail = email;
+        final String uId = userId;
+        final DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference("users/");
+        usersRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                if (!snapshot.hasChild(uId)) {
+                    Map<String, Object> childUpdates = new HashMap<>();
+                    childUpdates.put("name", uName);
+                    childUpdates.put("email", uEmail);
+                    usersRef.setValue(childUpdates);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+            }
+        });
+
     }
 
 }
