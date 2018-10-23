@@ -26,14 +26,13 @@ public class setup extends AppCompatActivity {
         setContentView(R.layout.activity_setup);
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        user.sendEmailVerification();
 
         final Map<String, Boolean> preferences = new HashMap<>();
 
         Button facebook = (Button) findViewById(R.id.facebook);
         facebook.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                preferences.put()
+                //preferences.put();
             }
 
         });
@@ -86,7 +85,7 @@ public class setup extends AppCompatActivity {
     }
 
     private void addUserPreference(String preference, String userId) {
-        final DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("users/" + userId + "/preferences/platforms/");
-        userRef.updateChildren(new Map<preference, true>);
+        //final DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("users/" + userId + "/preferences/platforms/");
+        //userRef.updateChildren(new Map<preference, true>);
     }
 }

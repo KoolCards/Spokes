@@ -84,10 +84,20 @@ public class MainActivity extends AppCompatActivity {
 
             if (resultCode == RESULT_OK) {
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                writeUserData(user.getUid(), user.getDisplayName(), user.getEmail());
                 final String uId = user.getUid();
-                final DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("users/" + uId);
-                userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("users/" + uId);
+                DatabaseListener childListener = new DatabaseListener(uId, uId, userRef);
+                userRef.addListenerForSingleValueEvent(childListener);
+
+                Map<String, Object> childUpdates = new HashMap<>();
+                childUpdates.put("name", user.getDisplayName());
+                childUpdates.put("email", user.getEmail());
+
+                DatabaseReference userRef2 = FirebaseDatabase.getInstance().getReference("users/" + uId);
+                DatabaseListener childListenerData = new DatabaseListener(uId, childUpdates, userRef2);
+                userRef2.addListenerForSingleValueEvent(childListenerData);
+
+                userRef2.addListenerForSingleValueEvent(new ValueEventListener() {
                     boolean hasChild = false;
                     @Override
                     public void onDataChange(DataSnapshot snapshot) {
@@ -108,29 +118,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void isSetup(String userId) {
-
-    }
-
-    private void writeUserData(String userId, String name, String email) {
-        final String uName = name;
-        final String uEmail = email;
-        final String uId = userId;
-        final DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference("users/");
-        usersRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                if (!snapshot.hasChild(uId)) {
-                    Map<String, Object> childUpdates = new HashMap<>();
-                    childUpdates.put("name", uName);
-                    childUpdates.put("email", uEmail);
-                    usersRef.setValue(childUpdates);
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError error) {
-            }
-        });
 
     }
 
