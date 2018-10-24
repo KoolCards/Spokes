@@ -29,49 +29,7 @@ public class setup extends AppCompatActivity {
 
         final Map<String, Boolean> preferences = new HashMap<>();
 
-        Button facebook = (Button) findViewById(R.id.facebook);
-        facebook.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                //preferences.put();
-            }
 
-        });
-
-        Button github = (Button) findViewById(R.id.github);
-        github.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                addUserPreference("github", user.getUid());
-            }
-
-        });
-
-        Button slack = (Button) findViewById(R.id.slack);
-        slack.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                addUserPreference("slack", user.getUid());
-            }
-
-        });
-
-        Button yahoonews = (Button) findViewById(R.id.yahoonews);
-        yahoonews.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                addUserPreference("yahoonews", user.getUid());
-            }
-
-        });
-
-        Button gmail = (Button) findViewById(R.id.gmail);
-        gmail.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                addUserPreference("gmail", user.getUid());
-            }
-
-        });
 
 
 

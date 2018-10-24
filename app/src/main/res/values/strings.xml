@@ -33,6 +33,18 @@
     <!-- Strings related to setup -->
     <string name="setup">Setup</string>
     <string name="selectservices">Select Frequently Used Services</string>
+    <string name="addservices">Select a Service</string>
+    <string-array name="service_arrays">
+        <item>Github</item>
+        <item>Slack</item>
+        <item>Facebook</item>
+        <item>Twitter</item>
+        <item>Gmail</item>
+        <item>Instagram</item>
+        <item>Snapchat</item>
+        <item>Vine</item>
+    </string-array>
+
 
     <!-- Strings related to addfriends -->
     <string name="addfriends">Add Friends</string>
